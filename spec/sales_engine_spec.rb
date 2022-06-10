@@ -4,7 +4,7 @@ require "./lib/merchant_collection"
 
 #You may need to add more `expect` lines to each test to make it more robust...!
 RSpec.describe SalesEngine do
-  xit "exists" do
+  it "exists" do
     sales_engine = SalesEngine.from_csv({
       :items => "./data/items.csv",
       :merchants => "./data/merchants.csv"
@@ -12,7 +12,7 @@ RSpec.describe SalesEngine do
     expect(sales_engine).to be_instance_of SalesEngine
   end
 
-  xit "can return an array of all items" do
+  it "can return an array of all items" do
     sales_engine = SalesEngine.from_csv({
       :items => "./data/items.csv",
       :merchants => "./data/merchants.csv"
@@ -24,16 +24,16 @@ RSpec.describe SalesEngine do
 
   end
 
-  xit "can return an array of all instances" do
+  xit "can return an array of all merchants" do
     sales_engine = SalesEngine.from_csv({
       :items => "./data/items.csv",
       :merchants => "./data/merchants.csv"
     })
 
     expect(sales_engine.merchant_collection).to be_instance_of MerchantCollection
+    expect(sales_engine.merchant_collection.all).to be_instance_of Array
+    expect(sales_engine.merchant_collection.all.length).to eq(475)
 
-
-    
   end
 
 end
